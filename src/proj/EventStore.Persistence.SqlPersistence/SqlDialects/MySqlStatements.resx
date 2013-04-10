@@ -128,7 +128,7 @@
        CommitStamp bigint NOT NULL,
        Dispatched bit NOT NULL DEFAULT 0,
        Headers blob NULL,
-       Payload blob NOT NULL,
+       Payload longblob NOT NULL,
        CONSTRAINT PK_Commits PRIMARY KEY (StreamId, CommitSequence)
 );
 CREATE UNIQUE INDEX IX_Commits_CommitId ON Commits (StreamId, CommitId);
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS Snapshots
 (
        StreamId binary(16) NOT NULL,
        StreamRevision int NOT NULL CHECK (StreamRevision &gt; 0),
-       Payload blob NOT NULL,
+       Payload longblob NOT NULL,
        CONSTRAINT PK_Snapshots PRIMARY KEY (StreamId, StreamRevision)
 );</value>
   </data>
